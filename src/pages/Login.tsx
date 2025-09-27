@@ -36,7 +36,7 @@ export default function LoginPage() {
       await login(data);
       toast({
         title: "Login realizado com sucesso!",
-        description: "Bem-vindo so deu perfil.",
+        description: "Bem-vindo ao seu perfil.",
         variant: "default",
       });
       navigate(from, { replace: true });
