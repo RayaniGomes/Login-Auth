@@ -1,0 +1,33 @@
+{
+  "validUser": {
+    "email": "test@example.com",
+    "password": "password123",
+    "name": "Test User",
+    "lastName": "Silva",
+    "id": 1
+  },
+  "invalidUser": {
+    "email": "wrong@example.com",
+    "password": "wrongpassword"
+  },
+  "adminUser": {
+    "email": "admin@example.com",
+    "password": "admin123",
+    "name": "Admin User",
+    "lastName": "Admin",
+    "id": 2,
+    "role": "admin"
+  },
+  "userWithAvatar": {
+    "email": "avatar@example.com",
+    "password": "password123",
+    "name": "Avatar User",
+    "lastName": "Test",
+    "id": 3,
+    "avatar": {
+      "high": "https://example.com/avatar-high.jpg",
+      "medium": "https://example.com/avatar-medium.jpg",
+      "low": "https://example.com/avatar-low.jpg"
+    }
+  }
+}

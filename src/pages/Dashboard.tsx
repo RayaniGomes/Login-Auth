@@ -64,6 +64,7 @@ export default function Dashboard() {
               <Button
                 variant="default"
                 onClick={handleLogout}
+                data-cy="logout-button"
                 className="transition-smooth hover:shadow-elegant"
                 style={{ backgroundColor: "#02274F" }}
               >
@@ -88,6 +89,7 @@ export default function Dashboard() {
         <Button
           variant="default"
           onClick={handleLogout}
+          data-cy="logout-button"
           className="w-80 transition-smooth hover:opacity-90"
           style={{ backgroundColor: "#02274F" }}
         >
@@ -96,13 +98,19 @@ export default function Dashboard() {
       </header>
 
       <main className="h-screen flex flex-col items-center justify-center bg-blue-50 p-4">
-        <Card className="w-full max-w-md shadow-2xl rounded-3xl">
+        <Card
+          className="w-full max-w-md shadow-2xl rounded-3xl"
+          data-cy="profile-card"
+        >
           <CardHeader>
             <CardTitle className="flex flex-col items-center space-x-2">
               <p className="text-sm text-gray-500 font-medium">
                 Profile picture
               </p>
-              <Avatar className="w-16 h-16 bg-blue-50 rounded-lg">
+              <Avatar
+                className="w-16 h-16 bg-blue-50 rounded-lg"
+                data-cy="profile-avatar"
+              >
                 <AvatarImage
                   className="object-cover "
                   src={profile?.avatar?.high}
@@ -125,6 +133,7 @@ export default function Dashboard() {
                     type="text"
                     value={profile.name}
                     readOnly
+                    data-cy="profile-name"
                     className="w-full h-14 bg-gray-100 border-gray-200 rounded-md px-3 text-gray-700"
                   />
                 </div>
@@ -136,6 +145,7 @@ export default function Dashboard() {
                     type="text"
                     value={profile.email}
                     readOnly
+                    data-cy="profile-email"
                     className="w-full h-14 bg-gray-100 border-gray-200 rounded-md px-3 text-gray-700"
                   />
                 </div>

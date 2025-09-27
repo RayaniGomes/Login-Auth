@@ -61,13 +61,13 @@ export default function LoginPage() {
 
   return (
     <section className="flex flex-col items-center justify-center h-screen bg-gray-50">
-      <Card className="w-full max-w-md shadow-2xl rounded-3xl">
+      <Card className="w-full max-w-md shadow-2xl rounded-3xl pb-2">
         <CardHeader className="flex items-center justify-center">
           <div className="text-4xl font-bold">
             <img src="/logo.png" alt="logo" />
           </div>
         </CardHeader>
-        <CardContent className="space-y-6 px-8 pb-4">
+        <CardContent className="space-y-6">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <div className="w-full">
               <Label
@@ -80,6 +80,7 @@ export default function LoginPage() {
                 id="email"
                 type="email"
                 placeholder="@gmail.com"
+                data-cy="email"
                 className={`h-12 bg-gray-100 border-gray-200 rounded-md px-3 text-gray-500 ${
                   errors.email ? "border-red-500" : ""
                 }`}
@@ -102,6 +103,7 @@ export default function LoginPage() {
                 id="password"
                 type="password"
                 placeholder="************"
+                data-cy="password"
                 className={`h-12 bg-gray-100 border-gray-200 rounded-md px-3 text-gray-500 ${
                   errors.password ? "border-red-500" : ""
                 }`}
@@ -120,6 +122,7 @@ export default function LoginPage() {
               disabled={authLoading}
               variant="default"
               size="lg"
+              data-cy="submit"
               className="w-full"
               style={{ backgroundColor: "#02274F" }}
             >
