@@ -1,38 +1,61 @@
-import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
+import { AxiosError } from "axios";
+import { useAuth } from "@/contexts/auth.context";
 import { loginSchema, type LoginFormData } from "@/schemas/login.schema";
 
 export default function LoginPage() {
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { toast } = useToast();
+  const { login, isLoading: authLoading } = useAuth();
+
+  const from = location.state?.from?.pathname || "/dashboard";
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
-  const handleLogin = async (data: LoginFormData) => {
-    setIsLoading(true);
+  const onSubmit = async (data: LoginFormData) => {
     try {
-      console.log("Dados do login:", data);
-      // Aqui você implementaria a lógica de autenticação
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simula API call
-
-      // Redireciona para o perfil após login bem-sucedido
-      navigate("/profile");
+      await login(data);
+      toast({
+        title: "Login realizado com sucesso!",
+        description: "Bem-vindo so deu perfil.",
+        variant: "default",
+      });
+      navigate(from, { replace: true });
     } catch (error) {
-      console.error("Erro no login:", error);
-    } finally {
-      setIsLoading(false);
+      if (error instanceof AxiosError && error.response?.status === 400) {
+        const serverErrors = error.response.data;
+        Object.keys(serverErrors).forEach((field) => {
+          setError(field as keyof LoginFormData, {
+            type: "server",
+            message: serverErrors[field][0],
+          });
+        });
+      } else {
+        toast({
+          title: "Erro no login",
+          description: "Credenciais inválidas. Verifique seu email e senha.",
+          variant: "destructive",
+        });
+      }
     }
   };
 
@@ -45,8 +68,8 @@ export default function LoginPage() {
           </div>
         </CardHeader>
         <CardContent className="space-y-6 px-8 pb-4">
-          <form onSubmit={handleSubmit(handleLogin)} className="space-y-6">
-            <div className="space-y-2">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+            <div className="w-full">
               <Label
                 htmlFor="email"
                 className="text-xl font-bold text-gray-700"
@@ -60,6 +83,7 @@ export default function LoginPage() {
                 className={`h-12 bg-gray-100 border-gray-200 rounded-md px-3 text-gray-500 ${
                   errors.email ? "border-red-500" : ""
                 }`}
+                disabled={authLoading}
                 {...register("email")}
               />
               {errors.email && (
@@ -67,7 +91,7 @@ export default function LoginPage() {
               )}
             </div>
 
-            <div className="space-y-2">
+            <div className="w-full">
               <Label
                 htmlFor="password"
                 className="text-xl font-bold text-gray-700"
@@ -81,6 +105,7 @@ export default function LoginPage() {
                 className={`h-12 bg-gray-100 border-gray-200 rounded-md px-3 text-gray-500 ${
                   errors.password ? "border-red-500" : ""
                 }`}
+                disabled={authLoading}
                 {...register("password")}
               />
               {errors.password && (
@@ -92,13 +117,13 @@ export default function LoginPage() {
 
             <Button
               type="submit"
-              disabled={isLoading}
+              disabled={authLoading}
               variant="default"
               size="lg"
-              className="w-full mt-4"
+              className="w-full"
               style={{ backgroundColor: "#02274F" }}
             >
-              {isLoading ? "Entrando..." : "Sign In"}
+              {authLoading ? "Entrando..." : "Sign In"}
             </Button>
           </form>
         </CardContent>
