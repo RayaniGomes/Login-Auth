@@ -18,5 +18,4 @@ export const login = async (
 
 export const logout = (): void => {
   clearAuthTokens();
-  window.location.href = "/login";
 };

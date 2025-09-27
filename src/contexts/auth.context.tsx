@@ -11,7 +11,13 @@ import {
   getAccessToken,
   getStoredUser,
 } from "../services/api";
-import { LoginRequest, LoginResponse, AuthContextType, User } from "@/interfaces/auth.interface";
+import {
+  LoginRequest,
+  LoginResponse,
+  AuthContextType,
+  User,
+} from "@/interfaces/auth.interface";
+import { Navigate } from "react-router-dom";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -75,5 +81,3 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
-
-
