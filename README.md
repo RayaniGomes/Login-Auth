@@ -68,7 +68,11 @@ email: cliente@youdrive.com
 password: password
 ```
 
-## 🧪 Executando os Testes E2E com Cypress
+> 💡 **Dica**: Estas credenciais são para demonstração. Em produção, utilize credenciais reais e seguras.
+
+## 🧪 Executando os Testes
+
+### Testes E2E com Cypress
 
 ```sh
 # Abrir interface do Cypress
