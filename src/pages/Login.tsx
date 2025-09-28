@@ -57,7 +57,7 @@ export default function LoginPage() {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center h-screen bg-gray-50">
+    <main className="h-screen flex flex-col items-center justify-center bg-blue-50 p-4">
       <Card className="w-full max-w-md shadow-2xl rounded-3xl pb-2">
         <CardHeader className="flex items-center justify-center">
           <div className="text-4xl font-bold">
@@ -128,6 +128,6 @@ export default function LoginPage() {
           </form>
         </CardContent>
       </Card>
-    </section>
+    </main>
   );
 }

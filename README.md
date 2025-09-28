@@ -26,7 +26,6 @@
 - 🔑 **Autenticação Completa**: Login com validação de credenciais
 - 📝 **Validação de Formulários**: Validação client-side com Zod
 - 🔄 **Gerenciamento de Estado**: Context API para autenticação
-- 🎨 **Interface Moderna**: Design responsivo com Tailwind CSS
 - 🔔 **Notificações**: Sistema de toast para feedback do usuário
 - 🧪 **Testes E2E**: Cobertura completa com Cypress
 - 🛡️ **Proteção de Rotas**: Redirecionamento baseado em autenticação
@@ -63,32 +62,24 @@ Instruções de como rodar o projeto:
 
 5. **Para testar a aplicação, utilize as seguintes credenciais:**
 
-```
-email: cliente@youdrive.com
-password: password
-```
+   ```
+   email: cliente@youdrive.com
+   password: password
+   ```
 
-> 💡 **Dica**: Estas credenciais são para demonstração. Em produção, utilize credenciais reais e seguras.
+> 💡 **Dica**: Estas credenciais são para demonstração.
 
 ## 🧪 Executando os Testes
 
 ### Testes E2E com Cypress
 
-```sh
-# Abrir interface do Cypress
-npm run test:e2e
+   ```sh
+   # Abrir interface do Cypress
+   npm run test:e2e
 
-# Executar testes em modo headless
-npm run test:e2e:run
-```
-
-## 📊 Cobertura de Testes
-
-- ✅ **35 testes E2E** cobrindo todos os fluxos
-- ✅ **Validação de formulários** com cenários de erro
-- ✅ **Fluxo de autenticação** completo
-- ✅ **Persistência de sessão** e refresh token
-- ✅ **Tratamento de erros** e notificações
+   # Executar testes em modo headless
+   npm run test:e2e:run
+   ```
 
 ## 🚀 Deploy
 

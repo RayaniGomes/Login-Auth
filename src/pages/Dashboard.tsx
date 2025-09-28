@@ -58,7 +58,7 @@ export default function Dashboard() {
           variant="default"
           onClick={handleLogout}
           data-cy="logout-button"
-          className="w-80 transition-smooth hover:opacity-90"
+          className="w-80 md:w-full transition-smooth hover:opacity-90"
           style={{ backgroundColor: "#02274F" }}
         >
           Logout
