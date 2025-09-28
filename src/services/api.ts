@@ -1,6 +1,5 @@
 import { UserProfile } from "@/interfaces/profile.interface";
 import axios from "axios";
-import { routesConfig } from "@/config/routes.config";
 
 const API_BASE_URL = "https://api.homologation.cliqdrive.com.br";
 
@@ -34,7 +33,7 @@ api.interceptors.response.use(
       clearAuthTokens();
 
       setTimeout(() => {
-        window.location.replace(routesConfig.login);
+        window.location.replace("/login");
       }, 1000);
     }
 

@@ -11,13 +11,7 @@ import {
   getAccessToken,
   getStoredUser,
 } from "../services/api";
-import {
-  LoginRequest,
-  LoginResponse,
-  AuthContextType,
-  User,
-} from "@/interfaces/auth.interface";
-import { routesConfig } from "@/config/routes.config";
+import { LoginRequest, LoginResponse, AuthContextType, User } from "@/interfaces/auth.interface";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -81,3 +75,5 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
+
+

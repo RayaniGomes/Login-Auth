@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthGuard, PublicRoute } from "@/hooks/AuthGuard";
 import { AuthProvider } from "@/contexts/auth.context";
 import { ProfileProvider } from "@/contexts/profile.context";
-import { routesConfig } from "@/config/routes.config";
 import LoginPage from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
@@ -30,7 +29,7 @@ export default function App() {
                 }
               />
               <Route
-                path={routesConfig.login}
+                path="/login"
                 element={
                   <PublicRoute>
                     <LoginPage />
@@ -38,14 +37,14 @@ export default function App() {
                 }
               />
               <Route
-                path={routesConfig.dashboard}
+                path="/dashboard"
                 element={
                   <AuthGuard>
                     <Dashboard />
                   </AuthGuard>
                 }
               />
-              <Route path={routesConfig.notFound} element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </ProfileProvider>

@@ -1,7 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/auth.context";
 import { AuthGuardProps } from "@/interfaces/auth.interface";
-import { routesConfig } from "@/config/routes.config";
 import IsLoading from "@/utils/isLoading.function";
 
 export const AuthGuard = ({ children }: AuthGuardProps) => {
@@ -13,9 +12,7 @@ export const AuthGuard = ({ children }: AuthGuardProps) => {
   }
 
   if (!isAuthenticated) {
-    return (
-      <Navigate to={routesConfig.login} state={{ from: location }} replace />
-    );
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   return <>{children}</>;
@@ -33,7 +30,7 @@ export const PublicRoute = ({ children }: PublicRouteProps) => {
   }
 
   if (isAuthenticated) {
-    return <Navigate to={routesConfig.dashboard} replace />;
+    return <Navigate to="/dashboard" replace />;
   }
 
   return <>{children}</>;
