@@ -1,5 +1,6 @@
 import { api, clearAuthTokens } from "./api";
 import { LoginRequest, LoginResponse } from "@/interfaces/auth.interface";
+import { routesConfig } from "@/config/routes.config";
 
 const ACCESS_TOKEN_KEY = "access_token";
 const REFRESH_TOKEN_KEY = "refresh_token";
@@ -18,5 +19,5 @@ export const login = async (
 
 export const logout = (): void => {
   clearAuthTokens();
-  window.location.href = "/login";
+  window.location.href = routesConfig.login;
 };

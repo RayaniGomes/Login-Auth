@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
 import { useAuth } from "@/contexts/auth.context";
 import { loginSchema, type LoginFormData } from "@/schemas/login.schema";
+import { routesConfig } from "@/config/routes.config";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ export default function LoginPage() {
         description: "Bem-vindo ao seu perfil.",
         variant: "default",
       });
-      navigate("/dashboard", { replace: true });
+      navigate(routesConfig.dashboard, { replace: true });
     } catch (error) {
       if (error instanceof AxiosError && error.response?.status === 400) {
         const serverErrors = error.response.data;
