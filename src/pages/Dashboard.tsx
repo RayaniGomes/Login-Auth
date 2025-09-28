@@ -44,7 +44,7 @@ export default function Dashboard() {
       description: "Você foi desconectado com sucesso.",
       variant: "default",
     });
-    navigate("/", { replace: true });
+    navigate("/login", { replace: true });
   };
 
   if (isLoading) {
