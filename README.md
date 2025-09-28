@@ -83,7 +83,7 @@ Instruções de como rodar o projeto:
 
 ## 🚀 Deploy
 
-O projeto utiliza o deploy da [Versel](https://vercel.com), para visualizar o mesmo, por favor [clique aqui!](https://login-auth-test.vercel.app/)
+O projeto utiliza o deploy da [Vercel](https://vercel.com), para visualizar o mesmo, por favor [clique aqui!](https://login-auth-test.vercel.app/)
 
 ## 📝 Licença
 
