@@ -27,10 +27,16 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 403 || error.response?.status === 400) {
+    const status = error.response?.status;
+
+    if (status === 401 || status === 403) {
       clearAuthTokens();
-      window.location.href = "/login";
+
+      setTimeout(() => {
+        window.location.replace("/login");
+      }, 1000);
     }
+
     return Promise.reject(error);
   }
 );

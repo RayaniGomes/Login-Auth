@@ -12,11 +12,8 @@ import { loginSchema, type LoginFormData } from "@/schemas/login.schema";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const location = useLocation();
   const { toast } = useToast();
   const { login, isLoading: authLoading } = useAuth();
-
-  const from = location.state?.from?.pathname || "/dashboard";
 
   const {
     register,
@@ -39,7 +36,7 @@ export default function LoginPage() {
         description: "Bem-vindo ao seu perfil.",
         variant: "default",
       });
-      navigate(from, { replace: true });
+      navigate("/dashboard", { replace: true });
     } catch (error) {
       if (error instanceof AxiosError && error.response?.status === 400) {
         const serverErrors = error.response.data;
