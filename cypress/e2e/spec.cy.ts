@@ -211,8 +211,8 @@ describe("Sistema de Autenticação - E2E Tests", () => {
       // Clicar no botão de logout
       cy.get("[data-cy=logout-button]").click();
 
-      // Verificar redirecionamento para login
-      cy.url().should("include", "/login");
+      // Verificar redirecionamento para página inicial
+      cy.url().should("eq", Cypress.config().baseUrl + "/");
 
       // Verificar se o localStorage foi limpo
       cy.window().then((win) => {
@@ -241,8 +241,8 @@ describe("Sistema de Autenticação - E2E Tests", () => {
       // Clicar no botão de logout
       cy.get("[data-cy=logout-button]").click();
 
-      // Verificar redirecionamento para login
-      cy.url().should("include", "/login");
+      // Verificar redirecionamento para página inicial
+      cy.url().should("eq", Cypress.config().baseUrl + "/");
     });
   });
 
